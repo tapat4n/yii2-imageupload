@@ -1,0 +1,76 @@
+.dropzone {
+    background: white none repeat scroll 0 0;
+    border: 2px dashed #888;
+    border-radius: 5px;
+    width:150px;
+    height:150px;
+    margin-left: 15px;
+    padding:0px;
+}
+
+.dropzone .dz-preview {
+	margin: 0px;
+}
+
+.dz-placeholder-message{
+	font-size: 24px;
+	font-weight: 300;	
+}
+
+.dz-image-upload {            
+    display: block;            
+    overflow: hidden;
+    position: relative; 
+    z-index: 10;
+    border: none;
+}
+
+.dz-image-upload img {  
+	width:100%;
+}
+
+.dz-button span {
+	font-size: 18px;
+	padding: 0;	
+	cursor: pointer !important;
+}
+
+.dz-button-crop {
+    top: 5px;
+
+}
+
+.dz-button-remove {
+    top: 30px;
+}
+
+.img-container,
+{
+	background-color: #f7f7f7;
+	overflow: hidden;
+	width: 100%;
+	text-align: center;
+}
+
+.img-container {
+	min-height: 200px;
+	max-height: 466px;
+	margin-bottom: 20px;
+}
+
+.img-container > img {
+	max-width: 100%;
+}
+
+@media screen and (min-width: 500px) {	
+	.image-crop .modal-dialog  {width:650px;}
+}
+.image-crop .modal-dialog  {width:650px;}
+
+/*.modal-header {
+	cursor: pointer;
+}*/
+
+
+            
+

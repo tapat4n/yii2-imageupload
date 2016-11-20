@@ -15,8 +15,6 @@ use yii\web\AssetBundle;
  */
 class ImageUploadAsset extends AssetBundle
 {
-    //public $basePath = '@webroot';
-    //public $baseUrl = '@web';
     public $sourcePath = __DIR__ . '/assets';
     public $css = [        
         'css/imageupload.css',

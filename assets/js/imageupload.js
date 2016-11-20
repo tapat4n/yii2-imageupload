@@ -41,7 +41,6 @@ $(document).ready(function() {
             </svg>\
         </div>\
     </div>';
-
 });
 
 function imageUploadInit(modelName, valueInputName, parametersInputName, cropSettings){  /*uploadModelName,*/   
@@ -50,10 +49,10 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
 
     //photo upload settings
     var form = dz.parents("form");
-    var valueInput = form.find('input[name="'+modelName+'['+valueInputName+']"]');
-    var parametersInput = form.find('input[name="'+modelName+'['+parametersInputName+']"]');
+    var valueInput = form.find('input[name="' + modelName + '[' + valueInputName + ']"]');
+    var parametersInput = form.find('input[name="' + modelName + '[' + parametersInputName + ']"]');
 
-    var photoDownloadUrl = dz.attr('image-url')+'/';
+    var photoDownloadUrl = dz.attr('image-url') + '/';
 
     var cropImage = $('#' + valueInputName + '-upload-image');
     var cropModal = $('#' + valueInputName + '-upload-modal');
@@ -158,7 +157,7 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
         cropImage.trigger('imageChange');
     }
 
-    $('<button/>', {
+    /*$('<button/>', {
         id: valueInputName + '_crop_apply_button',
         class: 'btn btn-primary',
         type: 'submit',
@@ -166,9 +165,9 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
         text: 'Применить'
     }).click(function(){
         setPreview();        
-    }).appendTo(cropModal.find("div.modal-footer"));
+    }).appendTo(cropModal.find("div.modal-footer"));*/
 
-    cropModal.on('hidden.bs.modal', function () {
-        cropImage.cropper("disable",true);
+    cropModal.on('hidden.bs.modal', function() {
+        cropImage.cropper("disable", true);
     });
 }

@@ -15,7 +15,10 @@
         "yiisoft/yii2": ">=2.0.4",
         "yiisoft/yii2-bootstrap": "*",
         "bower-asset/cropper":"v2.3.2",
-        "bower-asset/dropzone":"4.3.0"    
+        "bower-asset/dropzone":"4.3.0",
+        "fortawesome/font-awesome": "~4.7",
+        "ext-fileinfo": "*",
+        "ext-gd": "*"
     },
     "minimum-stability": "dev",
     "autoload": {

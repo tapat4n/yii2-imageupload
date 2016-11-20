@@ -2,7 +2,6 @@
 
 namespace ssoft\imageupload;
 
-use Yii;
 use yii\base\Model;
 
 class ImageFileModel extends Model

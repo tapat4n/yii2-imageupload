@@ -6,11 +6,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-
-
-use ssoft\imageupload\ImageFileModel;
 use yii\web\UploadedFile;
-
 use yii\helpers\Json;
 
 class ImageController extends Controller
@@ -26,8 +22,7 @@ class ImageController extends Controller
                 'rules' => [
                     [
                         'actions' => ['upload'],
-                        'allow' => true,
-                        'roles' => ['@'],
+                        'allow' => true
                     ],
                 ],
             ],
@@ -48,14 +43,15 @@ class ImageController extends Controller
         ];
     }
 
-    public function actionUpload(){
+    public function actionUpload()
+    {
         $result['uploaded']=false;
         $uploadModel = new ImageFileModel();
         $uploadModel->file = UploadedFile::getInstance($uploadModel, 'file');
-        if($uploadModel->validate()) {
+        if ($uploadModel->validate()) {
             $fileName = time();
             $fileExtension = $uploadModel->file->extension;
-            $uploaded = $uploadModel->file->saveAs(Yii::getAlias('@webroot') . '/files/' .$fileName.'.'.$fileExtension);
+            $uploaded = $uploadModel->file->saveAs(Yii::getAlias('@webroot') . '/files/' . $fileName . '.' . $fileExtension);
             $result = [
                 'uploaded' => $uploaded,
                 'name' => $fileName,

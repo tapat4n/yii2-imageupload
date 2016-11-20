@@ -13,17 +13,10 @@ use yii\web\AssetBundle;
  * @author Sergii Kozin <sergagame1@gmail.com>
  * @since 2.0
  */
-class ImagePackagesAsset extends AssetBundle
+class FontAwesomeAsset extends AssetBundle
 {
-    public $sourcePath = '@bower';
-
+    public $sourcePath = '@vendor/fortawesome/font-awesome';
     public $css = [
-        'cropper/dist/cropper.css',
-        'dropzone/dist/min/dropzone.min.css'
-    ];
-
-    public $js = [
-        'cropper/dist/cropper.js',
-        'dropzone/dist/min/dropzone.min.js'
+        'css/font-awesome.css',
     ];
 }

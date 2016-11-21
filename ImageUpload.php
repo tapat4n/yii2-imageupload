@@ -29,9 +29,7 @@ class ImageUpload extends Widget
     public $height = 150;
     public $width = 150;
     public $aspectRatio = 1;
-
-    private $_cryptSalt = '1111';
-
+    
     public function init()
     {
     	$view = $this->getView();
@@ -79,13 +77,13 @@ class ImageUpload extends Widget
                     <img src="" id="' . $this->attribute . '-upload-image"/>
                 </div>',
             'buttons' =>'
-                <button type="button" class="btn btn-primary" id="' . $this->attribute . '_crop_apply_button">' . \Yii::t('app', 'Apply') . '</button>
+                <button type="button" class="btn btn-primary" id="crop_apply_button">' . \Yii::t('app', 'Apply') . '</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">' . \Yii::t('app', 'Close') . '</button>'
         ]);
         $element .= sprintf('<div class="dropzone dz-default dz-message dz-%s %s" image-url="%s" image-path="%s" upload-action="%s" style="width:%dpx; height:%dpx; min-height:%dpx;">
             <div class="dz-message" data-dz-message><span class="dz-placeholder-message">%s</span></div>
         </div>', 
-        $this->attribute, $this->addClass, $this->imageUrl, crypt($this->imagePath, $this->_cryptSalt), \yii\helpers\Url::to(['imageupload/upload']),
+        $this->attribute, $this->addClass, $this->imageUrl, base64_encode($this->imagePath), \yii\helpers\Url::to(['imageupload/upload']),
         $this->width, $this->height, $this->height, 
         $this->placeholder);
 

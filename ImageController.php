@@ -45,13 +45,17 @@ class ImageController extends Controller
 
     public function actionUpload()
     {
-        $result['uploaded']=false;
+        $post = Yii::$app->request->post();
+        $result['uploaded'] = false;
         $uploadModel = new ImageFileModel();
         $uploadModel->file = UploadedFile::getInstance($uploadModel, 'file');
+        $uploadModel->path = $post['path'];
+
         if ($uploadModel->validate()) {
             $fileName = time();
             $fileExtension = $uploadModel->file->extension;
-            $uploaded = $uploadModel->file->saveAs(Yii::getAlias('@webroot') . '/files/' . $fileName . '.' . $fileExtension);
+            $path = base64_decode($uploadModel->path);
+            $uploaded = $uploadModel->file->saveAs($path . '/' . $fileName . '.' . $fileExtension);
             $result = [
                 'uploaded' => $uploaded,
                 'name' => $fileName,

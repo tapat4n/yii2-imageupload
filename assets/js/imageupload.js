@@ -47,19 +47,18 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
     var dzSelector = "div.dz-" + valueInputName;
     var dz = $(dzSelector);
 
-    //photo upload settings
+    //image upload settings
     var form = dz.parents("form");
     var valueInput = form.find('input[name="' + modelName + '[' + valueInputName + ']"]');
     var parametersInput = form.find('input[name="' + modelName + '[' + parametersInputName + ']"]');
-
-    var photoDownloadUrl = dz.attr('image-url') + '/';
+    var imageDownloadUrl = dz.attr('image-url') + '/';
+    var imageDownloadPath = dz.attr('image-path');
 
     var cropImage = $('#' + valueInputName + '-upload-image');
     var cropModal = $('#' + valueInputName + '-upload-modal');
 
     // dropzone
     dz.dropzone({
-        //paramName: uploadModelName+"[file]", 
         paramName: "ImageFileModel[file]",
         maxFilesize: 2.0,
         url: dz.attr('upload-action'),
@@ -73,6 +72,7 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
         init: function() {
             this.on("sending", function(file, xhr, formData) {
                 formData.append("_csrf", form.find('input[name="_csrf"]').val());
+                formData.append("path", imageDownloadPath);
             });
 
             this.on("maxfilesexceeded", function(file) {
@@ -82,8 +82,11 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
 
             this.on("addedfile", function(file) {
                 dz.find(".dz-button-crop").click(function(){
-                    cropImage.cropper("enable",true);                    
+                    cropImage.cropper("enable", true);
                     cropModal.modal("show");
+                    cropModal.find('#crop_apply_button').click(function(e){
+                        setPreview();
+                    });
                 });
                 dz.find(".dz-button-remove").click(function(){
                     dz.css('border', '2px dashed #888');
@@ -106,28 +109,27 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
                 }
             });
 
-            // show uploaded photo            
+            // show uploaded image
             if (valueInput.val()!=""){
-                var file = {name: photoDownloadUrl + valueInput.val()};
+                var file = {name: imageDownloadUrl + valueInput.val()};
                 this.emit("addedfile", file);
-                this.files.push(file)
+                this.files.push(file);
                 this.emit("thumbnail", file, file.name);
                 this.emit("complete", file);
                 cropperInit(cropSettings, valueInput, parametersInput, cropImage, dzSelector + ' .dz-image-upload');
             }
-        },
+        }
     });
 
     function cropperInit(cropSettings, value, params, img, preview){ 
         if (value.val()!=''){
             var cropState =JSON.parse(params.val());
-            img.attr('src', photoDownloadUrl + value.val());
+            img.attr('src', imageDownloadUrl + value.val());
             img.cropper({
                 aspectRatio: cropSettings.aspectRatio,
                 autoCropArea: 0.5,
                 strict: true,
-                crop: function(data) {
-                },
+                crop: function(data) {},
                 //preview: preview,
                 minContainerWidth: 600,
                 minContainerHeight: 500,
@@ -137,7 +139,7 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
                     img.cropper("setData", cropState.date);
                     setPreview();                    
                     img.cropper("disable",true);
-                },
+                }
             });
         }
     }
@@ -151,21 +153,11 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
         var cropData = {
             data:cropImage.cropper("getData"),
             canvas:cropImage.cropper("getCanvasData"),
-            cropbox:cropImage.cropper("getCropBoxData"),
+            cropbox:cropImage.cropper("getCropBoxData")
         };
         parametersInput.val(JSON.stringify(cropData));
         cropImage.trigger('imageChange');
     }
-
-    /*$('<button/>', {
-        id: valueInputName + '_crop_apply_button',
-        class: 'btn btn-primary',
-        type: 'submit',
-        form: 'content-edit-form',
-        text: 'Применить'
-    }).click(function(){
-        setPreview();        
-    }).appendTo(cropModal.find("div.modal-footer"));*/
 
     cropModal.on('hidden.bs.modal', function() {
         cropImage.cropper("disable", true);

@@ -1,7 +1,7 @@
 {
     "name": "sergeykoz/yii2-imageupload",
     "version":"0.0.1",
-    "description": "Easy editing of site content for the Yii framework",
+    "description": "Image upload widget with crop for Yii2",
     "keywords": ["yii2", "image", "upload", "crop"],
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
@@ -17,6 +17,7 @@
         "bower-asset/cropper":"v2.3.2",
         "bower-asset/dropzone":"4.3.0",
         "fortawesome/font-awesome": "~4.7",
+        "imagine/imagine": "0.5.*",
         "ext-fileinfo": "*",
         "ext-gd": "*"
     },

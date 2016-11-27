@@ -26,10 +26,9 @@ class ImageUpload extends Widget
     public $imageUrl;
     public $imagePath;
     public $placeholder;
-    public $height = 150;
-    public $width = 150;
+    public $size = ['height' => 150, 'width' => 150];
     public $aspectRatio = 1;
-    
+
     public function init()
     {
     	$view = $this->getView();
@@ -46,13 +45,13 @@ class ImageUpload extends Widget
             "' . $this->model->formName() . '",            
             "' . $this->attribute.'",
             "' . $this->parametersAttibute . '", 
-            {\'height\': \'' . $this->height . '\', \'width\': \'' . $this->width . '\'' . $aspectRatio . '});
+            {\'height\': \'' . $this->size['height'] . '\', \'width\': \'' . $this->size['width'] . '\'' . $aspectRatio . '});
         ', View::POS_READY);
 
          $this->getView()->registerCss('
             div.dz-' . $this->attribute . ' .dz-image-upload {  
-                width: ' . $this->width . 'px; 
-                height: ' . $this->height . 'px;
+                width: ' . $this->size['width'] . 'px; 
+                height: ' . $this->size['height'] . 'px;
             }
 
             div.dz-' . $this->attribute . ' .dz-button {
@@ -60,7 +59,7 @@ class ImageUpload extends Widget
                 padding: 0 0.4em;
                 border-radius: 3px;
                 position: absolute;
-                left: ' . ($this->width-30) . 'px;
+                left: ' . ($this->size['width'] - 30) . 'px;
                 width: 27px;
             }
         ');
@@ -84,7 +83,7 @@ class ImageUpload extends Widget
             <div class="dz-message" data-dz-message><span class="dz-placeholder-message">%s</span></div>
         </div>', 
         $this->attribute, $this->addClass, $this->imageUrl, base64_encode($this->imagePath), \yii\helpers\Url::to(['imageupload/upload']),
-        $this->width, $this->height, $this->height, 
+            $this->size['width'], $this->size['height'], $this->size['height'],
         $this->placeholder);
 
         return $element;

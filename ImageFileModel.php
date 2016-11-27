@@ -19,6 +19,7 @@ class ImageFileModel extends Model
                 'extensions' => ['jpg', 'jpeg', 'png', 'gif'],
                 'mimeTypes' => ['image/jpeg', 'image/pjpeg', 'image/png', 'image/gif'],
             ],
+            ['path', 'required'],
             ['path', 'string', 'max' => 255]
         ];
     }

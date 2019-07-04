@@ -54,6 +54,13 @@ Add upload widget to a form
 ?>
 ```
 
+Configure main.php
+```php
+'controllerMap' => [            
+    'imageupload' => 'ssoft\imageupload\ImageController',
+],
+```
+
 Manage of uploaded images
 ```php
 <?php

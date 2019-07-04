@@ -48,7 +48,7 @@ class ImageUpload extends Widget
             {\'height\': \'' . $this->size['height'] . '\', \'width\': \'' . $this->size['width'] . '\'' . $aspectRatio . '});
         ', View::POS_READY);
 
-         $this->getView()->registerCss('
+        $this->getView()->registerCss('
             div.dz-' . $this->attribute . ' .dz-image-upload {  
                 width: ' . $this->size['width'] . 'px; 
                 height: ' . $this->size['height'] . 'px;
@@ -67,7 +67,7 @@ class ImageUpload extends Widget
         $element = '';
         $element .= Html::activeHiddenInput($this->model, $this->parametersAttibute);
         $element .= Html::activeHiddenInput($this->model, $this->attribute);
-        $element .= $this->render('@vendor/sergeykoz/yii2-imageupload/views/modal', [
+        $element .= $this->render('@vendor/sergeykoz/yii2-imageupload/src/views/modal', [
             'id' => $this->attribute . '-upload-modal',
             'addClass' => 'image-crop',
             'title' => \Yii::t('app', 'Image edit'),
@@ -82,7 +82,7 @@ class ImageUpload extends Widget
         $element .= sprintf('<div class="dropzone dz-default dz-message dz-%s %s" image-url="%s" image-path="%s" upload-action="%s" style="width:%dpx; height:%dpx; min-height:%dpx;">
             <div class="dz-message" data-dz-message><span class="dz-placeholder-message">%s</span></div>
         </div>', 
-        $this->attribute, $this->addClass, $this->imageUrl, base64_encode($this->imagePath), \yii\helpers\Url::to(['imageupload/upload']),
+        $this->attribute, $this->addClass, $this->imageUrl, base64_encode($this->imagePath), \yii\helpers\Url::to(['/imageupload/upload']),
             $this->size['width'], $this->size['height'], $this->size['height'],
         $this->placeholder);
 

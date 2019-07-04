@@ -17,14 +17,14 @@
         "bower-asset/cropper":"v2.3.2",
         "bower-asset/dropzone":"4.3.0",
         "fortawesome/font-awesome": "~4.7",
-        "imagine/imagine": "0.5.*",
+        "imagine/imagine": "*",
         "ext-fileinfo": "*",
         "ext-gd": "*"
     },
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "ssoft\\imageupload\\": ""
+            "ssoft\\imageupload\\": "src"
         }
     }
 }

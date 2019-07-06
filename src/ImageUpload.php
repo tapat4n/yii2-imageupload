@@ -28,6 +28,8 @@ class ImageUpload extends Widget
     public $placeholder;
     public $size = ['height' => 150, 'width' => 150];
     public $aspectRatio = 1;
+    public $uploadAction = '/imageupload/upload';
+    public $crossOrigin = '';
 
     public function init()
     {
@@ -45,7 +47,8 @@ class ImageUpload extends Widget
             "' . $this->model->formName() . '",            
             "' . $this->attribute.'",
             "' . $this->parametersAttibute . '", 
-            {\'height\': \'' . $this->size['height'] . '\', \'width\': \'' . $this->size['width'] . '\'' . $aspectRatio . '});
+            {\'height\': \'' . $this->size['height'] . '\', \'width\': \'' . $this->size['width'] . '\'' . $aspectRatio . '},
+            "' . $this->crossOrigin . '");
         ', View::POS_READY);
 
         $this->getView()->registerCss('
@@ -82,7 +85,7 @@ class ImageUpload extends Widget
         $element .= sprintf('<div class="dropzone dz-default dz-message dz-%s %s" image-url="%s" image-path="%s" upload-action="%s" style="width:%dpx; height:%dpx; min-height:%dpx;">
             <div class="dz-message" data-dz-message><span class="dz-placeholder-message">%s</span></div>
         </div>', 
-        $this->attribute, $this->addClass, $this->imageUrl, base64_encode($this->imagePath), \yii\helpers\Url::to(['/imageupload/upload']),
+        $this->attribute, $this->addClass, $this->imageUrl, base64_encode($this->imagePath), \yii\helpers\Url::to([$this->uploadAction]),
             $this->size['width'], $this->size['height'], $this->size['height'],
         $this->placeholder);
 

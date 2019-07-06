@@ -1,10 +1,9 @@
 $(document).ready(function() {  
 
     Dropzone.autoDiscover = false;
-
     Dropzone.imageUploadPreviewTemplate = '<div class="dz-preview dz-file-preview">\
         <div class="dz-image-upload">\
-            <img data-dz-thumbnail />\
+            <img class="data-dz-thumbnail" />\
         </div>\
         <div class="dz-details">\
             <div class="dz-button dz-button-crop">\
@@ -43,7 +42,7 @@ $(document).ready(function() {
     </div>';
 });
 
-function imageUploadInit(modelName, valueInputName, parametersInputName, cropSettings){  /*uploadModelName,*/   
+function imageUploadInit(modelName, valueInputName, parametersInputName, cropSettings, crossOrigin){  /*uploadModelName,*/
     var dzSelector = "div.dz-" + valueInputName;
     var dz = $(dzSelector);
 
@@ -55,6 +54,9 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
     var imageDownloadPath = dz.attr('image-path');
 
     var cropImage = $('#' + valueInputName + '-upload-image');
+    if (crossOrigin) {
+        cropImage.attr('crossOrigin', crossOrigin);
+    }
     var cropModal = $('#' + valueInputName + '-upload-modal');
 
     // dropzone
@@ -62,6 +64,7 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
         paramName: "ImageFileModel[file]",
         maxFilesize: 2.0,
         url: dz.attr('upload-action'),
+        //withCredentials: false,
         addRemoveLinks : false,
         uploadMultiple: false,
         dictResponseError: 'Ошибка загрузки файла',
@@ -127,7 +130,7 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
             img.attr('src', imageDownloadUrl + value.val());
             img.cropper({
                 aspectRatio: cropSettings.aspectRatio,
-                autoCropArea: 0.5,
+                //autoCropArea: 0.5,
                 strict: true,
                 crop: function(data) {},
                 //preview: preview,
@@ -146,7 +149,6 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
 
     function setPreview(){
         var canvas = cropImage.cropper('getCroppedCanvas');
-        var context = canvas.getContext("2d");
         var png = canvas.toDataURL("image/png");
         $(dzSelector + ' .dz-image-upload > img').attr({'src':png, 'style':'max-height: ' + cropSettings.height + 'px; height:auto; max-width: ' + cropSettings.width + 'px; width:auto;'});
 

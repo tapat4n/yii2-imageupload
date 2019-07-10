@@ -1,6 +1,6 @@
 {
     "name": "sergeykoz/yii2-imageupload",
-    "version":"0.1.0",
+    "version":"0.2.0",
     "description": "Image upload widget with crop for Yii2",
     "keywords": ["yii2", "image", "upload", "crop"],
     "type": "yii2-extension",

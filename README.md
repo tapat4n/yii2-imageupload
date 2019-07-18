@@ -39,7 +39,8 @@ Add upload widget to a form
         'imagePath' => Yii::getAlias('@webroot') . '/files',
         'placeholder' => 'Photo',
         'size' => ['height' => 300, 'width' => 100],    
-        'aspectRatio' => 0.33
+        'aspectRatio' => 0.33,
+        'disabled' => false
     ]);
         
     // second way

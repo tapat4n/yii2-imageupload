@@ -42,7 +42,7 @@ $(document).ready(function() {
     </div>';
 });
 
-function imageUploadInit(modelName, valueInputName, parametersInputName, cropSettings, crossOrigin){  /*uploadModelName,*/
+function imageUploadInit(modelName, valueInputName, parametersInputName, cropSettings, crossOrigin) {
     var dzSelector = "div.dz-" + valueInputName;
     var dz = $(dzSelector);
 
@@ -67,7 +67,7 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
         //withCredentials: false,
         addRemoveLinks : false,
         uploadMultiple: false,
-        dictResponseError: 'Ошибка загрузки файла',
+        dictResponseError: 'Image download error',
         maxFiles: 1,        
         previewTemplate: Dropzone.imageUploadPreviewTemplate,
         createImageThumbnails: true,

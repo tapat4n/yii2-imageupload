@@ -30,6 +30,7 @@ class ImageUpload extends Widget
     public $aspectRatio = 1;
     public $uploadAction = '/imageupload/upload';
     public $crossOrigin = '';
+    public $disabled = false;
 
     public function init()
     {
@@ -48,7 +49,8 @@ class ImageUpload extends Widget
             "' . $this->attribute.'",
             "' . $this->parametersAttibute . '", 
             {\'height\': \'' . $this->size['height'] . '\', \'width\': \'' . $this->size['width'] . '\'' . $aspectRatio . '},
-            "' . $this->crossOrigin . '");
+            "' . $this->crossOrigin . '",
+            ' . ($this->disabled ? 'true' : 'false') . ');
         ', View::POS_READY);
 
         $this->getView()->registerCss('
@@ -65,6 +67,12 @@ class ImageUpload extends Widget
                 left: ' . ($this->size['width'] - 30) . 'px;
                 width: 27px;
             }
+            '. ($this->disabled ?
+            'div.dz-' . $this->attribute . ' {
+                pointer-events: none;
+                cursor: default;
+            }' : '')
+            .'
         ');
 
         $element = '';

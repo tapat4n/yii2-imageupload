@@ -137,7 +137,7 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
                 //preview: preview,
                 minContainerWidth: 600,
                 minContainerHeight: 500,
-                built: function () {
+                ready: function () {
                     img.cropper("setCropBoxData", cropState.cropbox);
                     img.cropper("setCanvasData", cropState.canvas);
                     img.cropper("setData", cropState.date);

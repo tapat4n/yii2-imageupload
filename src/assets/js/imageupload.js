@@ -62,6 +62,7 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
     // dropzone
     dz.dropzone({
         paramName: "ImageFileModel[file]",
+        acceptedFiles: ".jpeg,.jpg,.png,.gif",
         maxFilesize: 2.0,
         url: dz.attr('upload-action'),
         //withCredentials: false,

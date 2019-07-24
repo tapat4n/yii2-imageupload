@@ -131,10 +131,9 @@ function imageUploadInit(modelName, valueInputName, parametersInputName, cropSet
             img.attr('src', imageDownloadUrl + value.val());
             img.cropper({
                 aspectRatio: cropSettings.aspectRatio,
-                //autoCropArea: 0.5,
+                autoCropArea: 1,
                 strict: true,
                 crop: function(data) {},
-                //preview: preview,
                 minContainerWidth: 600,
                 minContainerHeight: 500,
                 ready: function () {

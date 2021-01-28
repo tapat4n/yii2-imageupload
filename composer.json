@@ -1,16 +1,11 @@
 {
-    "name": "sergeykoz/yii2-imageupload",
+    "name": "tapat4n/yii2-imageupload",
     "version":"0.3.0",
     "description": "Image upload widget with crop for Yii2",
     "keywords": ["yii2", "image", "upload", "crop"],
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
-    "authors": [
-        {
-            "name": "Sergey Kozin",
-            "email": "sergagame1@gmail.com"
-        }
-    ],
+    "authors": [],
     "require": {
         "yiisoft/yii2": ">=2.0.4",
         "yiisoft/yii2-bootstrap": "*",

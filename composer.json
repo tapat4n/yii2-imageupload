@@ -32,5 +32,10 @@
             "type": "composer",
             "url": "https://asset-packagist.org"
         }
-    ]
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-branch": "0.0.3-dev"
+        }
+    }
 }

@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ssoft\imageupload;
+namespace tapat4n\imageupload;
 
 use yii\web\AssetBundle;
 

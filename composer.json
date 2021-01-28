@@ -24,7 +24,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "ssoft\\imageupload\\": "src"
+            "tapat4n\\imageupload\\": "src"
         }
     },
     "repositories": [

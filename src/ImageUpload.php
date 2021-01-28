@@ -5,10 +5,10 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ssoft\imageupload;
+namespace tapat4n\imageupload;
 
 use yii\base\Widget;
-use ssoft\imageupload\ImageUploadAsset;
+use tapat4n\imageupload\ImageUploadAsset;
 use yii\helpers\Html;
 use yii\web\View;
 

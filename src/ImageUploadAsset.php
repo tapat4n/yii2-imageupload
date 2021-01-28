@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ssoft\imageupload;
+namespace tapat4n\imageupload;
 
 use yii\web\AssetBundle;
 
@@ -25,6 +25,6 @@ class ImageUploadAsset extends AssetBundle
     public $depends = [  
         'yii\web\YiiAsset', 
         'yii\bootstrap\BootstrapAsset',     
-        'ssoft\imageupload\ImagePackagesAsset',        
+        'tapat4n\imageupload\ImagePackagesAsset',
     ];
 }

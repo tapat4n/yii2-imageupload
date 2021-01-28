@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace ssoft\imageupload;
+namespace tapat4n\imageupload;
 
 use yii\helpers\Json;
 use \Imagine\Gd\Imagine;

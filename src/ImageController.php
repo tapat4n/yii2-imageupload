@@ -1,6 +1,6 @@
 <?php
 
-namespace ssoft\imageupload;
+namespace tapat4n\imageupload;
 
 use Yii;
 use yii\filters\AccessControl;
